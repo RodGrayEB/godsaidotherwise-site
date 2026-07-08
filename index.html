@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- God Said Otherwise · Final Production v1 -->
+<!-- God Said Otherwise · Final Production v1.2 -->
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -44,7 +44,7 @@
     --glow: rgba(212,160,23,0.4);
   }
   * { margin:0; padding:0; box-sizing:border-box; }
-  html { scroll-behavior:smooth; }
+  html { scroll-behavior:smooth; scroll-padding-top:80px; }
   body { background:var(--black); color:var(--white); font-family:'Crimson Pro',serif; overflow-x:hidden; }
 
   /* NAV */
@@ -147,7 +147,7 @@
     margin:48px 0;
   }
   .hero-book {
-    width:200px;
+    width:200px; height:auto;
     filter:drop-shadow(0 0 40px rgba(212,160,23,0.4)) drop-shadow(0 20px 40px rgba(0,0,0,0.8));
     animation:bookFloat 5s ease-in-out infinite;
   }
@@ -243,7 +243,7 @@
   }
   .chapter-card p { font-size:1rem; color:var(--muted); line-height:1.8; font-weight:300; }
   .chapter-photo {
-    width:100%; aspect-ratio:4/5; object-fit:cover; object-position:center;
+    width:100%; height:auto; aspect-ratio:4/5; object-fit:cover; object-position:center;
     filter:brightness(0.55) saturate(0.35);
     margin-bottom:32px;
     transition:filter 0.5s;
@@ -434,6 +434,32 @@
     margin-bottom: 20px;
     font-weight: 300;
   }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 860px) {
+    nav { padding:16px 24px; }
+    html { scroll-padding-top:60px; }
+    .nav-links { display:none; }
+    .hero { padding:120px 24px 64px; }
+    .hero-book-row { flex-direction:column-reverse; gap:32px; align-items:center; }
+    .hero-verse { max-width:92%; text-align:center; margin:0 auto; }
+    .scripture-bar { padding:24px 24px; }
+    .chapters { padding:64px 24px; }
+    .chapter-grid { grid-template-columns:1fr; }
+    .author-warm { grid-template-columns:1fr; }
+    .author-warm-img img { height:auto; }
+    .author-warm-img::after { background:linear-gradient(to bottom, transparent 55%, var(--black) 100%); }
+    .author-warm-text { padding:48px 24px; }
+    .speaking-divine { padding:64px 24px; }
+    .divine-topics { grid-template-columns:1fr; max-width:420px; }
+    .buy-divine { padding:64px 24px; }
+    footer { flex-direction:column; gap:14px; padding:36px 24px; text-align:center; }
+  }
+  @media (max-width: 500px) {
+    .hero { padding:104px 18px 52px; }
+    .hero-cta-row { flex-direction:column; width:100%; }
+    .hero-cta-row a { width:100%; text-align:center; }
+  }
 </style>
 <script type="application/ld+json">
 {
@@ -482,10 +508,10 @@
 <body>
 
 <nav>
-  <div style="display:flex;align-items:center;gap:12px;">
+  <a href="#top" style="display:flex;align-items:center;gap:12px;text-decoration:none;">
     <div class="nav-omega">Ω</div>
     <div class="nav-title">Roderick Gray</div>
-  </div>
+  </a>
   <div class="nav-links">
     <a href="#story">The Journey</a>
     <a href="#author">About</a>
@@ -495,7 +521,7 @@
 </nav>
 
 <!-- HERO -->
-<section class="hero">
+<section class="hero" id="top">
   <div class="light-rays"></div>
   <div class="hero-glow"></div>
   <div class="omega">Ω</div>
