@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<!-- God Said Otherwise · Final Production v1 -->
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>God Said Otherwise — A Memoir by Roderick Gray</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Cinzel+Decorative:wght@400;700&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<meta name="description" content="The memoir of Roderick Gray, a retired Chicago Public Schools teacher: a true story of serious illness, hard-won recovery, family, faith and friendship.">
+<meta name="author" content="Roderick Gray">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://roderick-gray.com/">
+<meta name="theme-color" content="#050308">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Roderick Gray">
+<meta property="og:title" content="God Said Otherwise — A Memoir by Roderick Gray">
+<meta property="og:description" content="The memoir of Roderick Gray, a retired Chicago Public Schools teacher: a true story of serious illness, hard-won recovery, family, faith and friendship.">
+<meta property="og:url" content="https://roderick-gray.com/">
+<meta property="og:image" content="https://roderick-gray.com/assets/images/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="God Said Otherwise, a memoir by Roderick Gray">
+<meta property="og:locale" content="en_US">
+<!-- Twitter -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="God Said Otherwise — A Memoir by Roderick Gray">
+<meta name="twitter:description" content="The memoir of Roderick Gray, a retired Chicago Public Schools teacher: a true story of serious illness, hard-won recovery, family, faith and friendship.">
+<meta name="twitter:image" content="https://roderick-gray.com/assets/images/og-image.png">
+<style>
+  :root {
+    --black: #050308;
+    --deep: #0D0618;
+    --purple: #2D1050;
+    --purple2: #1A0935;
+    --gold: #D4A017;
+    --gold2: #F0C040;
+    --gold-dim: #8A6A0A;
+    --white: #FFFDF5;
+    --muted: rgba(255,253,245,0.55);
+    --glow: rgba(212,160,23,0.4);
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body { background:var(--black); color:var(--white); font-family:'Crimson Pro',serif; overflow-x:hidden; }
+
+  /* NAV */
+  nav {
+    position:fixed; top:0; left:0; right:0; z-index:200;
+    padding:20px 64px;
+    display:flex; justify-content:space-between; align-items:center;
+    border-bottom:1px solid rgba(212,160,23,0.15);
+    background:rgba(5,3,8,0.92); backdrop-filter:blur(12px);
+  }
+  .nav-omega { font-size:1.4rem; color:var(--gold); font-family:'Cinzel',serif; }
+  .nav-title { font-family:'Cinzel',serif; font-size:0.75rem; letter-spacing:3px; text-transform:uppercase; color:var(--muted); }
+  .nav-links { display:flex; gap:36px; }
+  .nav-links a {
+    color:var(--muted); font-family:'Cinzel',serif;
+    font-size:0.65rem; letter-spacing:2.5px; text-transform:uppercase;
+    text-decoration:none; transition:color 0.3s;
+  }
+  .nav-links a:hover { color:var(--gold); }
+
+  /* HERO — spiritual drama */
+  .hero {
+    min-height:100vh; position:relative;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    overflow:hidden;
+    background:radial-gradient(ellipse at 50% 30%, #2D1050 0%, #0D0618 40%, #050308 100%);
+  }
+  /* Light rays from top */
+  .light-rays {
+    position:absolute; top:-100px; left:50%; transform:translateX(-50%);
+    width:800px; height:600px;
+    background: conic-gradient(from 260deg at 50% 0%, transparent 30%, rgba(212,160,23,0.04) 36%, transparent 42%, rgba(212,160,23,0.03) 48%, transparent 54%, rgba(212,160,23,0.04) 60%, transparent 66%);
+    animation: rayPulse 8s ease-in-out infinite;
+  }
+  @keyframes rayPulse {
+    0%,100% { opacity:0.6; }
+    50% { opacity:1; }
+  }
+  .hero-glow {
+    position:absolute; top:0; left:50%; transform:translateX(-50%);
+    width:400px; height:300px;
+    background:radial-gradient(ellipse, rgba(212,160,23,0.15) 0%, transparent 70%);
+    animation:glowPulse 4s ease-in-out infinite;
+  }
+  @keyframes glowPulse {
+    0%,100% { opacity:0.6; transform:translateX(-50%) scale(1); }
+    50% { opacity:1; transform:translateX(-50%) scale(1.1); }
+  }
+  .omega {
+    font-family:'Cinzel Decorative',serif;
+    font-size:clamp(5rem,12vw,14rem);
+    color:rgba(212,160,23,0.06);
+    position:absolute; top:50%; left:50%;
+    transform:translate(-50%,-50%);
+    user-select:none; pointer-events:none;
+    letter-spacing:-4px;
+  }
+  .hero-content {
+    position:relative; z-index:5;
+    text-align:center; padding:140px 40px 80px;
+  }
+  .divine-badge {
+    display:inline-flex; align-items:center; gap:12px;
+    border:1px solid rgba(212,160,23,0.4);
+    padding:8px 24px; margin-bottom:40px;
+    font-family:'Cinzel',serif; font-size:0.65rem; letter-spacing:4px; text-transform:uppercase;
+    color:var(--gold);
+  }
+  .badge-dot { width:4px; height:4px; background:var(--gold); border-radius:50%; }
+  .hero-h1 {
+    font-family:'Cinzel Decorative',serif;
+    font-size:clamp(2.5rem,6vw,7rem);
+    color:var(--white); line-height:1.05;
+    margin-bottom:8px;
+    text-shadow: 0 0 60px rgba(212,160,23,0.3);
+  }
+  .hero-h1-sub {
+    font-family:'Cinzel Decorative',serif;
+    font-size:clamp(3rem,8vw,10rem);
+    color:var(--gold); line-height:0.9;
+    margin-bottom:32px;
+    text-shadow: 0 0 80px rgba(212,160,23,0.5), 0 0 120px rgba(212,160,23,0.2);
+    animation:goldGlow 3s ease-in-out infinite;
+  }
+  @keyframes goldGlow {
+    0%,100% { text-shadow:0 0 80px rgba(212,160,23,0.5), 0 0 120px rgba(212,160,23,0.2); }
+    50% { text-shadow:0 0 100px rgba(212,160,23,0.7), 0 0 160px rgba(212,160,23,0.4); }
+  }
+  .hero-tagline {
+    font-family:'Crimson Pro',serif;
+    font-size:clamp(1rem,2vw,1.3rem); font-style:italic;
+    color:var(--muted); margin-bottom:20px; letter-spacing:1px;
+  }
+  .gold-rule {
+    width:120px; height:1px; background:linear-gradient(to right, transparent, var(--gold), transparent);
+    margin:24px auto;
+  }
+  .hero-book-row {
+    display:flex; align-items:flex-end; justify-content:center; gap:60px;
+    margin:48px 0;
+  }
+  .hero-book {
+    width:200px;
+    filter:drop-shadow(0 0 40px rgba(212,160,23,0.4)) drop-shadow(0 20px 40px rgba(0,0,0,0.8));
+    animation:bookFloat 5s ease-in-out infinite;
+  }
+  @keyframes bookFloat {
+    0%,100% { transform:translateY(0) rotate(-2deg); }
+    50% { transform:translateY(-12px) rotate(-2deg); }
+  }
+  .hero-verse {
+    font-family:'Crimson Pro',serif;
+    font-size:1.05rem; font-style:italic; color:rgba(212,160,23,0.7);
+    max-width:340px; line-height:1.7; text-align:center;
+  }
+  .hero-verse cite {
+    display:block; margin-top:8px; font-style:normal;
+    font-family:'Cinzel',serif; font-size:0.65rem; letter-spacing:2px; text-transform:uppercase;
+    color:rgba(212,160,23,0.5);
+  }
+  .hero-cta-row {
+    display:flex; gap:20px; justify-content:center; flex-wrap:wrap; margin-top:8px;
+  }
+  .btn-divine {
+    background:linear-gradient(135deg, var(--gold) 0%, #F0C040 50%, var(--gold) 100%);
+    color:var(--black); padding:18px 52px;
+    font-family:'Cinzel',serif; font-size:0.7rem; letter-spacing:3px; text-transform:uppercase;
+    font-weight:700; text-decoration:none; cursor:pointer; border:none;
+    position:relative; overflow:hidden;
+    transition:all 0.3s; display:inline-block;
+  }
+  .btn-divine:hover { box-shadow:0 0 40px rgba(212,160,23,0.6); }
+  .btn-ghost-divine {
+    border:1px solid rgba(212,160,23,0.5); color:var(--gold);
+    padding:18px 52px;
+    font-family:'Cinzel',serif; font-size:0.7rem; letter-spacing:3px; text-transform:uppercase;
+    text-decoration:none; cursor:pointer;
+    transition:all 0.3s; display:inline-block;
+  }
+  .btn-ghost-divine:hover { border-color:var(--gold); background:rgba(212,160,23,0.08); box-shadow:0 0 20px rgba(212,160,23,0.2); }
+
+  /* SCRIPTURE BAR */
+  .scripture-bar {
+    background:var(--purple2);
+    border-top:1px solid rgba(212,160,23,0.3);
+    border-bottom:1px solid rgba(212,160,23,0.3);
+    padding:28px 80px; text-align:center;
+  }
+  .scripture-bar p {
+    font-family:'Crimson Pro',serif; font-style:italic;
+    font-size:1.1rem; color:var(--gold);
+    letter-spacing:0.5px;
+  }
+  .scripture-bar cite {
+    font-style:normal; font-family:'Cinzel',serif;
+    font-size:0.65rem; letter-spacing:2px; text-transform:uppercase;
+    color:rgba(212,160,23,0.5); margin-left:16px;
+  }
+
+  /* CHAPTERS OF SUFFERING */
+  .chapters {
+    padding:100px 80px;
+    background:var(--deep);
+  }
+  .chapter-header { text-align:center; margin-bottom:72px; }
+  .chapter-header .eyebrow {
+    font-family:'Cinzel',serif; font-size:0.65rem; letter-spacing:4px; text-transform:uppercase;
+    color:var(--gold); display:block; margin-bottom:16px;
+  }
+  .chapter-header h2 {
+    font-family:'Cinzel Decorative',serif;
+    font-size:clamp(1.8rem,3.5vw,3rem); color:var(--white);
+    text-shadow:0 0 40px rgba(212,160,23,0.2);
+  }
+  .chapter-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:1px; background:rgba(212,160,23,0.1); }
+  .chapter-card {
+    background:var(--deep);
+    padding:56px 40px; position:relative;
+    overflow:hidden; cursor:pointer;
+    transition:background 0.4s;
+  }
+  .chapter-card:hover { background:rgba(45,16,80,0.5); }
+  .chapter-card::before {
+    content:''; position:absolute; top:0; left:0; right:0; height:2px;
+    background:linear-gradient(to right, transparent, var(--gold), transparent);
+    opacity:0; transition:opacity 0.4s;
+  }
+  .chapter-card:hover::before { opacity:1; }
+  .chapter-num {
+    font-family:'Cinzel',serif; font-size:0.65rem; letter-spacing:4px;
+    color:var(--gold-dim); text-transform:uppercase; margin-bottom:24px; display:block;
+  }
+  .chapter-card h3 {
+    font-family:'Cinzel',serif; font-size:1.1rem; color:var(--gold);
+    margin-bottom:16px; line-height:1.4;
+  }
+  .chapter-card p { font-size:1rem; color:var(--muted); line-height:1.8; font-weight:300; }
+  .chapter-photo {
+    width:100%; aspect-ratio:4/5; object-fit:cover; object-position:center;
+    filter:brightness(0.55) saturate(0.35);
+    margin-bottom:32px;
+    transition:filter 0.5s;
+  }
+  .chapter-card:hover .chapter-photo { filter:brightness(0.7) saturate(0.6); }
+
+  /* MIRACLE BANNER */
+  .miracle-banner {
+    background:linear-gradient(135deg, var(--purple2) 0%, var(--purple) 50%, var(--purple2) 100%);
+    padding:80px; text-align:center;
+    border-top:1px solid rgba(212,160,23,0.3);
+    border-bottom:1px solid rgba(212,160,23,0.3);
+    position:relative; overflow:hidden;
+  }
+  .miracle-banner::before {
+    content:''; position:absolute; inset:0;
+    background:radial-gradient(ellipse at center, rgba(212,160,23,0.1) 0%, transparent 70%);
+  }
+  .miracle-banner h2 {
+    font-family:'Cinzel Decorative',serif;
+    font-size:clamp(1.8rem,4vw,4rem); color:var(--white);
+    margin-bottom:20px; position:relative; z-index:1;
+    text-shadow:0 0 60px rgba(212,160,23,0.4);
+  }
+  .miracle-banner p {
+    font-size:1.15rem; color:var(--muted); max-width:600px; margin:0 auto 48px;
+    line-height:1.8; position:relative; z-index:1;
+  }
+
+  /* AUTHOR — DIVINE -->
+  .author-divine {
+    display:grid; grid-template-columns:1fr 480px;
+    min-height:75vh;
+    background:var(--black);
+  }
+  .author-divine-text {
+    padding:80px; display:flex; flex-direction:column; justify-content:center;
+    border-right:1px solid rgba(212,160,23,0.15);
+  }
+  .eyebrow-gold {
+    font-family:'Cinzel',serif; font-size:0.65rem; letter-spacing:4px;
+    text-transform:uppercase; color:var(--gold); margin-bottom:20px; display:block;
+  }
+  .author-divine-text h2 {
+    font-family:'Cinzel Decorative',serif;
+    font-size:clamp(2rem,4vw,3.5rem); color:var(--white); margin-bottom:8px;
+  }
+  .author-role-divine {
+    font-family:'Cinzel',serif; font-size:0.7rem; letter-spacing:3px;
+    text-transform:uppercase; color:var(--gold); margin-bottom:36px; display:block;
+    opacity:0.8;
+  }
+  .author-divine-text p {
+    font-size:1.1rem; line-height:1.9; color:var(--muted);
+    margin-bottom:20px; font-weight:300;
+  }
+  .divine-quote {
+    border-left:2px solid var(--gold); padding-left:20px; margin-top:12px;
+    font-style:italic; color:var(--gold); font-size:1.1rem; line-height:1.7;
+  }
+  .author-divine-photo {
+    position:relative; overflow:hidden;
+  }
+  .author-divine-photo img {
+    width:100%; height:100%; object-fit:cover; object-position:top;
+    filter:grayscale(30%) brightness(0.7);
+  }
+  .author-divine-photo::after {
+    content:''; position:absolute; inset:0;
+    background:linear-gradient(to left, transparent 40%, var(--black) 100%);
+  }
+
+  /* SPEAKING DIVINE */
+  .speaking-divine { background:var(--deep); padding:100px 80px; text-align:center; }
+  .speaking-divine h2 {
+    font-family:'Cinzel Decorative',serif;
+    font-size:clamp(1.8rem,3vw,3rem); color:var(--white); margin-bottom:16px;
+  }
+  .speaking-divine > p { color:var(--muted); max-width:540px; margin:0 auto 56px; line-height:1.8; font-size:1.05rem; }
+  .divine-topics { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; max-width:900px; margin:0 auto 52px; }
+  .divine-topic {
+    border:1px solid rgba(212,160,23,0.2);
+    padding:48px 32px; position:relative;
+    transition:border-color 0.3s, background 0.3s; cursor:pointer;
+  }
+  .divine-topic:hover {
+    border-color:rgba(212,160,23,0.6);
+    background:rgba(212,160,23,0.05);
+  }
+  .topic-symbol { font-size:1.5rem; color:var(--gold); margin-bottom:16px; display:block; font-family:'Cinzel',serif; }
+  .divine-topic h4 {
+    font-family:'Cinzel',serif; font-size:0.85rem; letter-spacing:1px;
+    color:var(--gold); margin-bottom:12px; text-transform:uppercase;
+  }
+  .divine-topic p { font-size:1rem; color:var(--muted); line-height:1.7; }
+
+  /* BUY DIVINE */
+  .buy-divine {
+    background:linear-gradient(to bottom, var(--purple) 0%, var(--black) 100%);
+    padding:100px 80px; text-align:center;
+    border-top:1px solid rgba(212,160,23,0.3);
+  }
+  .buy-divine h2 {
+    font-family:'Cinzel Decorative',serif;
+    font-size:clamp(2rem,4vw,4rem); color:var(--white); margin-bottom:16px;
+    text-shadow:0 0 60px rgba(212,160,23,0.3);
+  }
+  .buy-divine p { color:var(--muted); margin-bottom:48px; max-width:460px; margin-left:auto; margin-right:auto; font-size:1.05rem; line-height:1.8; }
+  .buy-btns { display:flex; gap:20px; justify-content:center; flex-wrap:wrap; }
+  .waitlist-form { max-width:460px; margin:0 auto; }
+  .wl-fields { display:flex; flex-direction:column; gap:24px; margin-bottom:36px; text-align:left; }
+  .wl-label span { display:block; font-family:'Cinzel',serif; font-size:0.6rem; letter-spacing:2.5px; text-transform:uppercase; color:var(--gold); margin-bottom:8px; }
+  .wl-label input { width:100%; background:transparent; border:none; border-bottom:1px solid rgba(212,160,23,0.35); color:var(--white); font-family:'Crimson Pro',serif; font-size:1.05rem; padding:8px 2px; transition:border-color 0.3s; }
+  .wl-label input:focus { outline:none; border-bottom-color:var(--gold2); }
+  .wl-hp { position:absolute; left:-9999px; width:1px; height:1px; opacity:0; }
+  .wl-msg { margin-top:20px; font-family:'Cinzel',serif; font-size:0.7rem; letter-spacing:1.5px; min-height:1em; }
+  .wl-msg.ok { color:var(--gold2); }
+  .wl-msg.err { color:#E07A5F; }
+
+  footer {
+    background:var(--black); padding:40px 80px;
+    display:flex; justify-content:space-between; align-items:center;
+    border-top:1px solid rgba(212,160,23,0.1);
+  }
+  .f-omega { font-family:'Cinzel Decorative',serif; color:var(--gold); font-size:1.2rem; }
+  footer p { color:rgba(255,255,255,0.25); font-size:0.7rem; letter-spacing:1px; }
+
+  /* AUTHOR — C3 Layout adapted for C4 Dark Theme */
+  .author-warm {
+    display: grid;
+    grid-template-columns: 380px 1fr;
+    min-height: 75vh;
+    background: var(--black);
+    border-top: 1px solid rgba(212,160,23,0.25);
+    border-bottom: 1px solid rgba(212,160,23,0.25);
+  }
+  .author-warm-img {
+    overflow: hidden;
+    position: relative;
+  }
+  .author-warm-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top;
+    filter: grayscale(20%) brightness(0.75);
+  }
+  .author-warm-img::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to right, transparent 60%, var(--black) 100%);
+  }
+  .author-warm-text {
+    padding: 80px 80px 80px 64px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    position: relative;
+  }
+  .author-warm-text::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 10%; bottom: 10%;
+    width: 2px;
+    background: linear-gradient(to bottom, transparent, rgba(212,160,23,0.5), transparent);
+  }
+  .author-warm-name {
+    font-family: 'Cinzel Decorative', serif;
+    font-size: clamp(2rem, 3.5vw, 3rem);
+    color: var(--white);
+    margin-bottom: 4px;
+  }
+  .author-warm-role {
+    font-family: 'Cinzel', serif;
+    font-size: 0.7rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 32px;
+    display: block;
+    opacity: 0.85;
+  }
+  .author-warm-body {
+    font-size: 1.1rem;
+    line-height: 1.9;
+    color: var(--muted);
+    margin-bottom: 20px;
+    font-weight: 300;
+  }
+</style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://roderick-gray.com/#website",
+      "url": "https://roderick-gray.com/",
+      "name": "Roderick Gray",
+      "inLanguage": "en-US",
+      "publisher": { "@id": "https://roderick-gray.com/#roderick" }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://roderick-gray.com/#roderick",
+      "name": "Roderick Gray",
+      "url": "https://roderick-gray.com/",
+      "jobTitle": ["Author", "Speaker"],
+      "description": "Author and speaker, and a retired Chicago Public Schools teacher of 30 years from the South Side of Chicago.",
+      "image": "https://roderick-gray.com/assets/images/roderick-gray-portrait.webp",
+      "alumniOf": [
+        { "@type": "CollegeOrUniversity", "name": "Western Illinois University" },
+        { "@type": "CollegeOrUniversity", "name": "Roosevelt University" }
+      ],
+      "knowsAbout": ["Education", "Resilience", "Faith", "Public speaking"]
+    },
+    {
+      "@type": "Book",
+      "@id": "https://roderick-gray.com/#book",
+      "name": "God Said Otherwise: A Story of Family, Perseverance and Friendship",
+      "author": { "@id": "https://roderick-gray.com/#roderick" },
+      "inLanguage": "en",
+      "genre": "Memoir",
+      "datePublished": "2026-08-01",
+      "description": "The memoir of Roderick Gray, a retired Chicago Public Schools teacher: a true story of serious illness, hard-won recovery, family, faith and friendship.",
+      "image": "https://roderick-gray.com/assets/images/book-cover.webp",
+      "url": "https://roderick-gray.com/",
+      "about": ["Resilience", "Faith", "Family", "Recovery"],
+      "mainEntityOfPage": "https://roderick-gray.com/"
+    }
+  ]
+}
+</script>
+</head>
+<body>
+
+<nav>
+  <div style="display:flex;align-items:center;gap:12px;">
+    <div class="nav-omega">Ω</div>
+    <div class="nav-title">Roderick Gray</div>
+  </div>
+  <div class="nav-links">
+    <a href="#story">The Journey</a>
+    <a href="#author">About</a>
+    <a href="#speaking">Speaking</a>
+    <a href="#waitlist">Get the Book</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="light-rays"></div>
+  <div class="hero-glow"></div>
+  <div class="omega">Ω</div>
+  <div class="hero-content">
+    <div class="divine-badge"><span class="badge-dot"></span>A Memoir of Faith &amp; Survival<span class="badge-dot"></span></div>
+    <h1 class="hero-h1">God Said</h1>
+    <div class="hero-h1-sub">Otherwise</div>
+    <p class="hero-tagline">A Story of Family, Perseverance &amp; Friendship</p>
+    <div class="gold-rule"></div>
+    <div class="hero-book-row">
+      <div class="hero-verse">
+        "Five years of dialysis. Five months in a hospital bed. He lost the ability to walk. Then God answered."
+        <cite>— The Story of Roderick Gray</cite>
+      </div>
+      <img src="assets/images/book-cover.webp" alt="God Said Otherwise" class="hero-book" width="896" height="1372" decoding="async" fetchpriority="high">
+    </div>
+    <div class="hero-cta-row">
+      <a href="#waitlist" class="btn-divine">Join the Waitlist</a>
+      <a href="#story" class="btn-ghost-divine">The Journey</a>
+    </div>
+  </div>
+</section>
+
+<!-- SCRIPTURE BAR -->
+<div class="scripture-bar">
+  <p>"I have fought the good fight, I have finished the race, I have kept the faith."<cite>2 Timothy 4:7</cite></p>
+</div>
+
+<!-- CHAPTERS -->
+<section class="chapters" id="story">
+  <div class="chapter-header">
+    <span class="eyebrow">The Journey</span>
+    <h2>Three Chapters of an Uncommon Life</h2>
+  </div>
+  <div class="chapter-grid">
+    <div class="chapter-card">
+      <img src="assets/images/chapter-1-hospital.webp" alt="Roderick Gray during his hospitalization and health crisis" class="chapter-photo" width="760" height="950" decoding="async" loading="lazy">
+      <span class="chapter-num">Chapter I · 2020–2024</span>
+      <h3>The Weight of the Storm</h3>
+      <p>Kidney failure arrives without warning. Roderick begins dialysis — five years of it — while continuing to teach, to father, to believe. Then 2024 brings something no one was ready for.</p>
+    </div>
+    <div class="chapter-card">
+      <img src="assets/images/chapter-2-recovery.webp" alt="Roderick Gray recovering in his hospital bed" class="chapter-photo" width="760" height="951" decoding="async" loading="lazy">
+      <span class="chapter-num">Chapter II · 2024–2025</span>
+      <h3>Into the Valley</h3>
+      <p>Five months hospitalized. His ability to walk: gone. His faith: tested beyond measure. His family: immovable. What happens in the darkest places determines who you become in the light.</p>
+    </div>
+    <div class="chapter-card">
+      <img src="assets/images/chapter-3-rehabilitation.webp" alt="Therapy" class="chapter-photo" width="760" height="950" decoding="async" loading="lazy">
+      <span class="chapter-num">Chapter III · November 2025</span>
+      <h3>God Said Otherwise</h3>
+      <p>Step by step through intensive rehabilitation at Shirley Ryan. And then — the call every transplant patient prays for. A second chance. A kidney. A life reclaimed. God had answered.</p>
+    </div>
+  </div>
+</section>
+
+<!-- MIRACLE BANNER -->
+<div class="miracle-banner">
+  <h2>"The Doctors Gave Me Odds.<br>God Gave Me Otherwise."</h2>
+  <p>Roderick Gray's memoir is a testimony to what faith, family, and friendship can carry you through — even when medicine says the chances are slim.</p>
+  <a href="#waitlist" class="btn-divine">Read This Story</a>
+</div>
+
+<!-- AUTHOR -->
+<section class="author-warm" id="author">
+  <div class="author-warm-img">
+    <img src="assets/images/roderick-gray-portrait.webp" alt="Roderick Gray" width="1036" height="1176" decoding="async" loading="lazy">
+  </div>
+  <div class="author-warm-text">
+    <span class="eyebrow-gold">About the Author</span>
+    <h2 class="author-warm-name">Roderick Gray</h2>
+    <p class="author-warm-role">Educator &middot; Survivor &middot; Author &middot; Speaker</p>
+    <p class="author-warm-body">Born and raised on Chicago's South Side, Roderick Gray taught for 30 years in the West Englewood community &mdash; the same community that forged him. He holds a BA in Economics and an MA in Sociology from Western Illinois University, and an MA in Education from Roosevelt University.</p>
+    <p class="author-warm-body">He is the devoted husband of Tene and the proud father of Roderick Jr., William, and Amir. His survival story is a gift to everyone who has ever been told the odds are against them.</p>
+    <p class="divine-quote">"I didn't survive so I could stay quiet. I survived so I could tell the truth about what carried me."</p>
+  </div>
+</section>
+
+<!-- SPEAKING -->
+<section class="speaking-divine" id="speaking">
+  <span class="eyebrow-gold">Book Roderick</span>
+  <h2>A Voice Forged in Fire</h2>
+  <p>Roderick doesn't speak from a stage removed from suffering. He speaks from the hospital room, the rehab floor, the transplant table — and from the other side.</p>
+  <div class="divine-topics">
+    <div class="divine-topic">
+      <span class="topic-symbol">✦</span>
+      <h4>Faith Under Fire</h4>
+      <p>What it means to hold on to God when your body and your world are falling apart</p>
+    </div>
+    <div class="divine-topic">
+      <span class="topic-symbol">✦</span>
+      <h4>The Power of Community</h4>
+      <p>30 years of West Englewood — on showing up, serving, and what it truly means to love a community</p>
+    </div>
+    <div class="divine-topic">
+      <span class="topic-symbol">✦</span>
+      <h4>Surviving & Thriving</h4>
+      <p>The medical crisis, the recovery, the rebirth — and what resurrection teaches us about living fully</p>
+    </div>
+  </div>
+  <a href="mailto:rgrayeb@gmail.com?subject=Speaking%20Inquiry" class="btn-divine">Inquire About Speaking</a>
+</section>
+
+<!-- WAITLIST -->
+<section class="buy-divine" id="waitlist">
+  <span class="eyebrow-gold">The Book</span>
+  <h2>God Said Otherwise</h2>
+  <p>The book arrives <strong>August 1st</strong>. Join the waitlist and you'll be the first to know the moment it's live on Amazon.</p>
+
+  <form class="waitlist-form" id="waitlistForm" novalidate>
+    <div class="wl-fields">
+      <label class="wl-label">
+        <span>First Name</span>
+        <input type="text" name="fields[first_name]" autocomplete="given-name" required>
+      </label>
+      <label class="wl-label">
+        <span>Email</span>
+        <input type="email" name="email_address" autocomplete="email" required>
+      </label>
+    </div>
+    <input type="text" name="website" class="wl-hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+    <button type="submit" class="btn-divine">Notify Me on Launch Day</button>
+    <p class="wl-msg" id="wlMsg" aria-live="polite"></p>
+  </form>
+</section>
+
+<footer>
+  <div class="f-omega">Ω</div>
+  <p>© 2026 Roderick Gray · All Rights Reserved</p>
+</footer>
+
+<script>
+(function () {
+  var f = document.getElementById('waitlistForm'),
+      m = document.getElementById('wlMsg');
+  var KIT_ACTION = 'https://app.kit.com/forms/9662072/subscriptions';
+  f.addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (f.website.value) return;                 // honeypot tripped -> bot
+    var fd = new FormData(f);
+    fd.delete('website');
+    var data = new URLSearchParams(fd);   // send as x-www-form-urlencoded (what Kit parses)
+    m.className = 'wl-msg'; m.textContent = 'Adding you\u2026';
+    fetch(KIT_ACTION, { method: 'POST', body: data, headers: { 'Accept': 'application/json' } })
+      .then(function (r) { if (!r.ok) throw 0; return r.json(); })
+      .then(function () {
+        f.reset();
+        m.className = 'wl-msg ok';
+        m.textContent = "You're on the list. We'll email you the moment the book is live.";
+      })
+      .catch(function () {
+        m.className = 'wl-msg err';
+        m.textContent = 'Something went wrong \u2014 please try again.';
+      });
+  });
+})();
+</script>
+</body>
+</html>
