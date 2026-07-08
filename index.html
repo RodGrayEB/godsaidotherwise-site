@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- God Said Otherwise · Final Production v1.2 -->
+<!-- God Said Otherwise · Final Production v1.3 -->
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -249,6 +249,9 @@
     transition:filter 0.5s;
   }
   .chapter-card:hover .chapter-photo { filter:brightness(0.7) saturate(0.6); }
+  .chapter-card.in-view { background:rgba(45,16,80,0.5); }
+  .chapter-card.in-view::before { opacity:1; }
+  .chapter-card.in-view .chapter-photo { filter:brightness(0.7) saturate(0.6); }
 
   /* MIRACLE BANNER */
   .miracle-banner {
@@ -661,6 +664,10 @@
   f.addEventListener('submit', function (e) {
     e.preventDefault();
     if (f.website.value) return;                 // honeypot tripped -> bot
+    var first = (f.elements['fields[first_name]'].value || '').trim();
+    var email = (f.elements['email_address'].value || '').trim();
+    if (!first) { m.className='wl-msg err'; m.textContent='Please enter your first name.'; f.elements['fields[first_name]'].focus(); return; }
+    if (!/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) { m.className='wl-msg err'; m.textContent='Please enter a valid email address.'; f.elements['email_address'].focus(); return; }
     var fd = new FormData(f);
     fd.delete('website');
     var data = new URLSearchParams(fd);   // send as x-www-form-urlencoded (what Kit parses)
@@ -677,6 +684,18 @@
         m.textContent = 'Something went wrong \u2014 please try again.';
       });
   });
+})();
+</script>
+<script>
+(function () {
+  if (!('IntersectionObserver' in window)) return;
+  if (!window.matchMedia('(hover: none)').matches) return;   // touch/mobile only
+  var cards = document.querySelectorAll('.chapter-card');
+  if (!cards.length) return;
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) { e.target.classList.toggle('in-view', e.isIntersecting); });
+  }, { rootMargin: '-42% 0px -42% 0px', threshold: 0 });   // fires when a card hits the vertical center
+  cards.forEach(function (c) { io.observe(c); });
 })();
 </script>
 </body>
