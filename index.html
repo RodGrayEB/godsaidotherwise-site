@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<!-- God Said Otherwise · Final Production v1.3 -->
+<!-- God Said Otherwise · Final Production v1.4 · Chapter One reader added -->
 <html lang="en">
 <head>
 <meta charset="UTF-8">
@@ -252,6 +252,100 @@
   .chapter-card.in-view { background:rgba(45,16,80,0.5); }
   .chapter-card.in-view::before { opacity:1; }
   .chapter-card.in-view .chapter-photo { filter:brightness(0.7) saturate(0.6); }
+
+  /* EXCERPT TRIGGER + READER MODAL */
+  .btn-excerpt {
+    display:inline-flex; align-items:center; gap:10px; margin-top:24px;
+    background:transparent; border:1px solid rgba(212,160,23,0.5); color:var(--gold);
+    font-family:'Cinzel',serif; font-size:0.65rem; letter-spacing:3px; text-transform:uppercase;
+    padding:13px 22px; cursor:pointer; transition:all 0.25s ease; position:relative; z-index:2;
+  }
+  .btn-excerpt:hover { border-color:var(--gold); background:rgba(212,160,23,0.08); box-shadow:0 0 20px rgba(212,160,23,0.2); }
+  .btn-excerpt svg { width:14px; height:14px; flex-shrink:0; }
+
+  .reader-overlay {
+    position:fixed; inset:0; background:rgba(5,3,8,0.92);
+    display:none; align-items:center; justify-content:center;
+    z-index:999; padding:24px; backdrop-filter:blur(6px);
+  }
+  .reader-overlay.open { display:flex; }
+  .reader-frame { width:100%; max-width:480px; height:min(680px, 88vh); position:relative; perspective:2400px; }
+  .reader-chrome-top { display:flex; align-items:center; justify-content:space-between; margin-bottom:14px; padding:0 4px; }
+  .reader-title { font-family:'Cinzel',serif; font-size:0.68rem; letter-spacing:3px; text-transform:uppercase; color:var(--gold-dim); }
+  .reader-title strong { color:var(--gold); }
+  .reader-close { background:none; border:none; color:var(--muted); font-size:1.4rem; cursor:pointer; line-height:1; padding:4px 8px; font-family:serif; }
+  .reader-close:hover { color:var(--gold); }
+  .ribbon {
+    flex-shrink:0; margin:0 10px;
+    background:linear-gradient(180deg, var(--gold2), var(--gold-dim));
+    color:var(--black); font-family:'Cinzel',serif; font-size:0.58rem;
+    letter-spacing:2px; text-transform:uppercase; padding:5px 12px;
+    border-radius:2px;
+    box-shadow:0 2px 6px rgba(0,0,0,0.35);
+  }
+  .book { position:relative; width:100%; height:calc(100% - 40px); }
+  .page {
+    position:absolute; inset:0; background:#F2E9D4;
+    background-image:
+      radial-gradient(ellipse at top left, rgba(255,255,255,0.4), transparent 60%),
+      radial-gradient(ellipse at bottom right, rgba(0,0,0,0.06), transparent 60%);
+    border-radius:2px;
+    box-shadow:0 20px 50px rgba(0,0,0,0.55), inset 0 0 0 1px rgba(0,0,0,0.06);
+    transform-origin:left center; transform-style:preserve-3d;
+    transition:transform 0.7s cubic-bezier(0.45,0.05,0.15,1);
+    display:flex; flex-direction:column;
+  }
+  .page.turned { transform:rotateY(-170deg); }
+  .page::after {
+    content:''; position:absolute; inset:0;
+    background:linear-gradient(to right, rgba(0,0,0,0.18), transparent 12%, transparent 88%, rgba(0,0,0,0.12));
+    pointer-events:none;
+  }
+  .page-inner { flex:1; padding:44px 32px 30px; overflow:hidden; display:flex; flex-direction:column; min-height:0; position:relative; }
+  .page-kicker { font-family:'Cinzel',serif; font-size:0.58rem; letter-spacing:3px; text-transform:uppercase; color:var(--gold-dim); text-align:center; margin-bottom:18px; }
+  .page-chapter-title { font-family:'Cinzel Decorative',serif; font-size:1.3rem; color:var(--purple); text-align:center; margin:0 0 22px; }
+  .page-text {
+    font-family:'Crimson Pro',serif; font-size:0.92rem; line-height:1.75; color:#241a10; text-align:justify; font-weight:400;
+    overflow-y:auto; -webkit-overflow-scrolling:touch; flex:1; min-height:0;
+    padding-bottom:8px; scrollbar-width:thin; scrollbar-color:rgba(138,106,10,0.4) transparent;
+  }
+  .page-text::-webkit-scrollbar { width:4px; }
+  .page-text::-webkit-scrollbar-thumb { background:rgba(138,106,10,0.35); border-radius:2px; }
+  .page-text p { margin:0 0 1em; text-indent:1.4em; }
+  .page-text p:first-child { text-indent:0; }
+  .page-inner::after {
+    content:''; position:absolute; left:32px; right:32px; bottom:26px; height:22px;
+    background:linear-gradient(to bottom, rgba(242,233,212,0), rgba(242,233,212,0.95));
+    pointer-events:none;
+  }
+  .page-num { text-align:center; font-family:'Cinzel',serif; font-size:0.7rem; color:var(--gold-dim); padding:10px 0 18px; letter-spacing:1px; }
+  .reader-nav {
+    position:absolute; top:50%; transform:translateY(-50%);
+    background:rgba(5,3,8,0.5); border:1px solid rgba(212,160,23,0.35); color:var(--gold);
+    width:40px; height:40px; border-radius:50%; cursor:pointer;
+    display:flex; align-items:center; justify-content:center; font-size:1.1rem;
+    z-index:10; transition:all 0.2s ease;
+  }
+  .reader-nav:hover { background:rgba(212,160,23,0.15); }
+  .reader-nav:disabled { opacity:0.25; cursor:default; }
+  .reader-nav.prev { left:-54px; }
+  .reader-nav.next { right:-54px; }
+  @media (max-width:620px) {
+    .reader-nav.prev { left:-6px; }
+    .reader-nav.next { right:-6px; }
+  }
+  .reader-chrome-bottom {
+    text-align:center; margin-top:14px;
+    font-family:'Cinzel',serif; font-size:0.62rem; letter-spacing:2px;
+    color:var(--muted); text-transform:uppercase;
+  }
+  .reader-chrome-bottom .divider { color:var(--gold-dim); margin:0 8px; }
+  .reader-chrome-bottom em { font-style:italic; }
+  @media (max-width:500px) {
+    .page-inner { padding:34px 22px 22px; }
+    .page-text { font-size:0.85rem; line-height:1.68; }
+    .page-chapter-title { font-size:1.1rem; }
+  }
 
   /* MIRACLE BANNER */
   .miracle-banner {
@@ -565,6 +659,10 @@
       <span class="chapter-num">Chapter I · 2020–2024</span>
       <h3>The Weight of the Storm</h3>
       <p>Kidney failure arrives without warning. Roderick begins dialysis — five years of it — while continuing to teach, to father, to believe. Then 2024 brings something no one was ready for.</p>
+      <button class="btn-excerpt" id="openReader" type="button">
+        Read the Opening Pages
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 19.5V6a2 2 0 012-2h13v14.5M4 19.5A2.5 2.5 0 016.5 17H19M4 19.5A2.5 2.5 0 006.5 22H19v-4.5"/></svg>
+      </button>
     </div>
     <div class="chapter-card">
       <img src="assets/images/chapter-2-recovery.webp" alt="Roderick Gray recovering in his hospital bed" class="chapter-photo" width="760" height="951" decoding="async" loading="lazy">
@@ -580,6 +678,25 @@
     </div>
   </div>
 </section>
+
+<!-- CHAPTER ONE READER -->
+<div class="reader-overlay" id="readerOverlay" role="dialog" aria-modal="true" aria-label="Opening pages preview">
+  <div class="reader-frame">
+    <div class="reader-chrome-top">
+      <span class="reader-title"><strong>Opening Pages</strong> · God Said Otherwise</span>
+      <div class="ribbon">Excerpt</div>
+      <button class="reader-close" id="closeReader" type="button" aria-label="Close preview">&times;</button>
+    </div>
+    <div class="book" id="book"></div>
+    <button class="reader-nav prev" id="prevPage" type="button" aria-label="Previous page">&#8249;</button>
+    <button class="reader-nav next" id="nextPage" type="button" aria-label="Next page">&#8250;</button>
+    <div class="reader-chrome-bottom">
+      <span id="pageCounter">Page 1 of 5</span>
+      <span class="divider">&mdash;</span>
+      <span>From <em>God Said Otherwise</em></span>
+    </div>
+  </div>
+</div>
 
 <!-- MIRACLE BANNER -->
 <div class="miracle-banner">
@@ -696,6 +813,116 @@
     entries.forEach(function (e) { e.target.classList.toggle('in-view', e.isIntersecting); });
   }, { rootMargin: '-42% 0px -42% 0px', threshold: 0 });   // fires when a card hits the vertical center
   cards.forEach(function (c) { io.observe(c); });
+})();
+</script>
+<script>
+(function () {
+  var pages = [
+    {
+      num: 5, kicker: "Chapter 1", title: "The Beginning",
+      paras: [
+        "To say that it has been a long five years would be an understatement. So much has happened to me and my family, I am honestly having a hard time finding a starting point. It might seem like a long time period but really it flashed like a blur or a short moment in time. It quite simply went downhill like this.",
+        "I had begun to have gout flares in the year of 2018. They just came out of the blue. Honestly that is the worst pain I have ever experienced in my life. Gout occurs when your body is not able to filter out the uric acid that exists as waste in our blood. One of the functions of the kidney is to filter out uric acid and other toxins through your urine. During a gout flare these toxins form into crystals that deposit themselves in a variety of joints throughout the body, most commonly in the big toe. Upon doing some research, I saw that I did not engage in the typical"
+      ]
+    },
+    {
+      num: 6, kicker: "", title: "",
+      paras: [
+        "nutritional habits (heavy wine and beer drinker, shellfish heavy diet) that would lead to these types of flares.",
+        "The doctor would usually prescribe a steroid to remove the inflammation and send you on your way. However, in the fall of 2018 I was experiencing the typical gout flare. Swelling in the big toe joint which caused me to limp. I got a last minute appointment to see a doctor that was filling in for my primary care physician. He listened to me explain how these flares kept reoccurring and suggested he take a blood and urine sample. As we waited, he pulled the results up on the screen. I saw a look of concern engulf his stoic demeanor. He turned to me and said \u201cyou should make an appointment to see your primary physician right away. You have some severe issues with your kidney function. I would not wait another day to have this addressed.\u201d His words hit me in the chest like I had been kicked by a mule. I left the doctor's office shaken and frightful of what the gravity of his words actually meant.",
+        "I made that appointment with my physician who was taking over for my previous doctor that retired. He had"
+      ]
+    },
+    {
+      num: 7, kicker: "", title: "",
+      paras: [
+        "reviewed my labs before I came into the office. He introduced himself and proceeded to tell me that if I wanted to live I would listen to him and follow all of his recommendations. He talked for another fifteen minutes, but to be quite honest, I didn't hear a word he said after he asked me if I wanted to live. The rest of the appointment was a blur, but when I left the office I knew that my life would be in for a dramatic change and I answered his question to myself \u201cyes I do want to live.\u201d",
+        "Before I left the office, my doctor scheduled an appointment with a nephrologist, a kidney specialist. He spoke about her with a level of confidence that immediately caught my attention. \u201cShe's one of the best,\u201d he said, urging me to follow her guidance without hesitation. He believed that if there was a way to preserve my kidney function and navigate the road ahead successfully, she would know exactly how to get me from where I was to where I needed to be.",
+        "Upon meeting her she listened to me explain the types of issues I had been experiencing and my overall"
+      ]
+    },
+    {
+      num: 8, kicker: "", title: "",
+      paras: [
+        "health. She also reviewed my blood work results and explained in detail how the kidney should function and how my kidney was functioning. I noticed right away there were some very distinct differences with what my body was going through as opposed to how it should be functioning.",
+        "What she did next was surprising because no doctor had ever asked these types of questions. Rather than focusing solely on my symptoms, she conducted a comprehensive family medical history that included both my parents and siblings. She took note of any health issues they might have experienced, along with their formal diagnoses and treatment histories. Using that information, she accessed a medical database and obtained the complete medical records of both my parents. After spending time reviewing their charts, she indicated that she had a better understanding of what we were looking at. It was then that she explained that my mother had a kidney condition called Focal Segmental Glomerulosclerosis or FSGS. This is a serious, often progressive disease that is characterized by scarring in the"
+      ]
+    },
+    {
+      num: 9, kicker: "", title: "",
+      paras: [
+        "kidneys filtering units, leading to nephrotic syndrome, massive protein loss in urine and swelling.",
+        "This would be the starting point for looking at what was happening with my kidneys. It was clear that I was spilling a great deal of protein as evidenced by the foamy nature of my urine and my creatinine level was through the roof. The first order of business was to prescribe medications that would attempt to lower my creatinine level and make some dietary changes that would address my phosphorus and potassium levels. We had bi-weekly appointments and drew blood work every month. She explained that although the damage that had been done could not be reversed, treatment could help the disease from progressing any further. The first few months of regular blood testing showed that my kidney function was remaining stable. I followed every recommendation my nephrologist gave me and also took it upon myself to research the types of dietary changes that might improve my chances of achieving the best possible results. We\u2026"
+      ]
+    }
+  ];
+
+  var book = document.getElementById('book');
+  var overlay = document.getElementById('readerOverlay');
+  var openBtn = document.getElementById('openReader');
+  if (!book || !overlay || !openBtn) return;   // guard: reader markup not present
+
+  var current = 0;
+
+  function buildPages() {
+    book.innerHTML = '';
+    pages.forEach(function (p) {
+      var el = document.createElement('div');
+      el.className = 'page';
+      el.innerHTML =
+        '<div class="page-inner">' +
+          (p.kicker ? '<div class="page-kicker">' + p.kicker + '</div>' : '') +
+          (p.title ? '<div class="page-chapter-title">' + p.title + '</div>' : '') +
+          '<div class="page-text">' + p.paras.map(function (t) { return '<p>' + t + '</p>'; }).join('') + '</div>' +
+        '</div>' +
+        '<div class="page-num">' + p.num + '</div>';
+      book.appendChild(el);
+    });
+    updateView();
+  }
+
+  function updateView() {
+    var els = [].slice.call(book.children);
+    els.forEach(function (el, i) {
+      el.classList.toggle('turned', i < current);
+      el.style.zIndex = i < current ? (i + 1) : (pages.length - i);
+    });
+    document.getElementById('pageCounter').textContent = 'Page ' + (current + 1) + ' of ' + pages.length;
+    document.getElementById('prevPage').disabled = current === 0;
+    document.getElementById('nextPage').disabled = current === pages.length - 1;
+  }
+
+  document.getElementById('nextPage').addEventListener('click', function () {
+    if (current < pages.length - 1) { current++; updateView(); }
+  });
+  document.getElementById('prevPage').addEventListener('click', function () {
+    if (current > 0) { current--; updateView(); }
+  });
+
+  openBtn.addEventListener('click', function (e) {
+    e.stopPropagation();
+    overlay.classList.add('open');
+    current = 0;
+    buildPages();
+  });
+  document.getElementById('closeReader').addEventListener('click', function () { overlay.classList.remove('open'); });
+  overlay.addEventListener('click', function (e) { if (e.target === overlay) overlay.classList.remove('open'); });
+  document.addEventListener('keydown', function (e) {
+    if (!overlay.classList.contains('open')) return;
+    if (e.key === 'Escape') overlay.classList.remove('open');
+    if (e.key === 'ArrowRight') document.getElementById('nextPage').click();
+    if (e.key === 'ArrowLeft') document.getElementById('prevPage').click();
+  });
+
+  var touchX = null;
+  book.addEventListener('touchstart', function (e) { touchX = e.touches[0].clientX; });
+  book.addEventListener('touchend', function (e) {
+    if (touchX === null) return;
+    var dx = e.changedTouches[0].clientX - touchX;
+    if (dx < -40) document.getElementById('nextPage').click();
+    if (dx > 40) document.getElementById('prevPage').click();
+    touchX = null;
+  });
 })();
 </script>
 </body>
